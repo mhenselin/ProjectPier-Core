@@ -25,14 +25,14 @@
       $persist  = array_var($params, 'persist', false);
       
       $link = $persist ? 
-        @mysql_pconnect($host, $user, $pass) :
-        @mysql_connect($host, $user, $pass);
+        @mysqli_pconnect($host, $user, $pass) :
+        @mysqli_connect($host, $user, $pass);
         
       if (!is_resource($link)) {
         throw new DBConnectError($host, $user, $pass, $database);
       } // if
       
-      if (!@mysql_select_db($database, $link)) {
+      if (!@mysqli_select_db($link, $database)) {
         throw new DBConnectError($host, $user, $pass, $database);
       } // if
       
@@ -51,7 +51,7 @@
     * @return mixed
     */
     protected function executeQuery($sql) {
-      return @mysql_query($sql, $this->link);
+      return @mysqli_query($this->link, $sql);
     } // executeQuery
     
     /**
@@ -95,7 +95,7 @@
     * @return integer
     */
     function affectedRows() {
-      return mysql_affected_rows($this->link);
+      return mysqli_affected_rows($this->link);
     } // affectedRows
     
     /**
@@ -106,7 +106,7 @@
     * @return integer
     */
     function lastInsertId() {
-      return mysql_insert_id($this->link);
+      return mysqli_insert_id($this->link);
     } // lastInsertId
     
     /**
@@ -117,7 +117,7 @@
     * @return string
     */
     function lastError() {
-      return mysql_error($this->link);
+      return mysqli_error($this->link);
     } // lastError
     
     /**
@@ -128,7 +128,7 @@
     * @return integer
     */
     function lastErrorCode() {
-      return mysql_errno($this->link);
+      return mysqli_errno($this->link);
     } // lastErrorCode
     
     /**
@@ -291,10 +291,10 @@
       } // if
       
       if (is_object($unescaped) && ($unescaped instanceof DateTimeValue)) {
-		return "TIMESTAMP '" . mysql_real_escape_string($unescaped->toMySQL()) . "'";
+		return "TIMESTAMP '" . mysqli_real_escape_string($unescaped->toMySQL()) . "'";
       } // if
       
-      return "'" . mysql_real_escape_string($unescaped, $this->link) . "'";
+      return "'" . mysqli_real_escape_string($unescaped, $this->link) . "'";
     } // escapeValue
     
     /**
@@ -305,7 +305,7 @@
     * @return array
     */
     function fetchRow($resource) {
-      return mysql_fetch_assoc($resource);
+      return mysqli_fetch_assoc($resource);
     } // fetchRow
     
     /**
@@ -316,7 +316,7 @@
     * @return integer
     */
     function numRows($resource) {
-      return mysql_num_rows($resource);
+      return mysqli_num_rows($resource);
     } // numRows
     
     /**
@@ -327,7 +327,7 @@
     * @return boolean
     */
     function freeResult($resource) {
-      return mysql_free_result($resource);
+      return mysqli_free_result($resource);
     } // freeResult
     
   } // MysqlDBAdapter

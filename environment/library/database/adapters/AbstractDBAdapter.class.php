@@ -384,7 +384,8 @@
     * @return boolean
     */
     function isConnected() {
-      return is_resource($this->link);
+      //return is_resource($this->link);
+      return ($this->link instanceof mysqli);
     } // isConnected
     
     /**
@@ -405,7 +406,7 @@
     * @return null
     */
     protected function setLink($link) {
-      if (is_resource($link)) {
+      if ($link instanceof mysqli) {
         $this->link = $link;
       } // if
     } // setLink

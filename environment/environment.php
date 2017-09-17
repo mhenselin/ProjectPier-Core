@@ -27,7 +27,7 @@
   } // if
 
   //$timezone = config_option('timezone', 'GMT');
-  $timezone = 'GMT';
+  $timezone = 'Europe/Berlin';
   //$timezone = 'Europe/Sofia';
   @ini_set('date.timezone', $timezone );
   if (function_exists('date_default_timezone_set')) {

@@ -18,7 +18,7 @@
     * @param void
     * @return integer 
     */
-    function getId() {
+    static function getId() {
       return $this->getColumnValue('id');
     } // getId()
     
@@ -29,7 +29,7 @@
     * @param integer $value
     * @return boolean
     */
-    function setId($value) {
+    static function setId($value) {
       return $this->setColumnValue('id', $value);
     } // setId() 
     
@@ -40,7 +40,7 @@
     * @param void
     * @return string 
     */
-    function getCategoryName() {
+    static function getCategoryName() {
       return $this->getColumnValue('category_name');
     } // getCategoryName()
     
@@ -51,7 +51,7 @@
     * @param string $value
     * @return boolean
     */
-    function setCategoryName($value) {
+    static function setCategoryName($value) {
       return $this->setColumnValue('category_name', $value);
     } // setCategoryName() 
     
@@ -62,7 +62,7 @@
     * @param void
     * @return string 
     */
-    function getName() {
+    static function getName() {
       return $this->getColumnValue('name');
     } // getName()
     
@@ -73,7 +73,7 @@
     * @param string $value
     * @return boolean
     */
-    function setName($value) {
+    static function setName($value) {
       return $this->setColumnValue('name', $value);
     } // setName() 
     
@@ -84,7 +84,7 @@
     * @param void
     * @return string 
     */
-    function getValue() {
+    static function getValue() {
       return $this->getColumnValue('value');
     } // getValue()
     
@@ -95,7 +95,7 @@
     * @param string $value
     * @return boolean
     */
-    function setValue($value) {
+    static function setValue($value) {
       return $this->setColumnValue('value', $value);
     } // setValue() 
     
@@ -106,7 +106,7 @@
     * @param void
     * @return string 
     */
-    function getConfigHandlerClass() {
+    static function getConfigHandlerClass() {
       return $this->getColumnValue('config_handler_class');
     } // getConfigHandlerClass()
     
@@ -117,7 +117,7 @@
     * @param string $value
     * @return boolean
     */
-    function setConfigHandlerClass($value) {
+    static function setConfigHandlerClass($value) {
       return $this->setColumnValue('config_handler_class', $value);
     } // setConfigHandlerClass() 
     
@@ -128,7 +128,7 @@
     * @param void
     * @return boolean 
     */
-    function getIsSystem() {
+    static function getIsSystem() {
       return $this->getColumnValue('is_system');
     } // getIsSystem()
     
@@ -139,7 +139,7 @@
     * @param boolean $value
     * @return boolean
     */
-    function setIsSystem($value) {
+    static function setIsSystem($value) {
       return $this->setColumnValue('is_system', $value);
     } // setIsSystem() 
     
@@ -150,7 +150,7 @@
     * @param void
     * @return integer 
     */
-    function getOptionOrder() {
+    static function getOptionOrder() {
       return $this->getColumnValue('option_order');
     } // getOptionOrder()
     
@@ -161,7 +161,7 @@
     * @param integer $value
     * @return boolean
     */
-    function setOptionOrder($value) {
+    static function setOptionOrder($value) {
       return $this->setColumnValue('option_order', $value);
     } // setOptionOrder() 
     
@@ -172,7 +172,7 @@
     * @param void
     * @return string 
     */
-    function getDevComment() {
+    static function getDevComment() {
       return $this->getColumnValue('dev_comment');
     } // getDevComment()
     
@@ -183,7 +183,7 @@
     * @param string $value
     * @return boolean
     */
-    function setDevComment($value) {
+    static function setDevComment($value) {
       return $this->setColumnValue('dev_comment', $value);
     } // setDevComment() 
     
@@ -195,7 +195,7 @@
     * @param void
     * @return ConfigOptions 
     */
-    function manager() {
+    static function manager() {
       if (!($this->manager instanceof ConfigOptions)) {
         $this->manager = ConfigOptions::instance();
       }

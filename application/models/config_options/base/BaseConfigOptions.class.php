@@ -36,7 +36,7 @@
     * @param void
     * @return array
     */
-    function getColumns() {
+    static function getColumns() {
       return array_keys(self::$columns);
     } // getColumns
     
@@ -47,7 +47,7 @@
     * @param string $column_name
     * @return string
     */
-    function getColumnType($column_name) {
+    static function getColumnType($column_name) {
       if (isset(self::$columns[$column_name])) {
         return self::$columns[$column_name];
       } else {
@@ -62,7 +62,7 @@
     * @param void
     * @return array or string
     */
-    function getPkColumns() {
+    static function getPkColumns() {
       return 'id';
     } // getPkColumns
     
@@ -73,7 +73,7 @@
     * @param void
     * @return string
     */
-    function getAutoIncrementColumn() {
+    static function getAutoIncrementColumn() {
       return 'id';
     } // getAutoIncrementColumn
     
@@ -96,7 +96,7 @@
     * @return one or ConfigOptions objects
     * @throws DBQueryError
     */
-    function find($arguments = null) {
+    static function find($arguments = null) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::find($arguments);
       } else {
@@ -113,7 +113,7 @@
     * @param array $arguments
     * @return one or ConfigOptions objects
     */
-    function findAll($arguments = null) {
+    static function findAll($arguments = null) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::findAll($arguments);
       } else {
@@ -130,7 +130,7 @@
     * @param array $arguments
     * @return ConfigOption 
     */
-    function findOne($arguments = null) {
+    static function findOne($arguments = null) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::findOne($arguments);
       } else {
@@ -148,7 +148,7 @@
     * @param boolean $force_reload If true cache will be skipped and data will be loaded from database
     * @return ConfigOption 
     */
-    function findById($id, $force_reload = false) {
+    static function findById($id, $force_reload = false) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::findById($id, $force_reload);
       } else {
@@ -165,7 +165,7 @@
     * @param string $conditions Query conditions
     * @return integer
     */
-    function count($condition = null) {
+    static function count($condition = null) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::count($condition);
       } else {
@@ -182,7 +182,7 @@
     * @param string $conditions Query conditions
     * @return boolean
     */
-    function delete($condition = null) {
+    static function delete($condition = null) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::delete($condition);
       } else {
@@ -206,7 +206,7 @@
     * @param integer $current_page Current page number
     * @return array
     */
-    function paginate($arguments = null, $items_per_page = 10, $current_page = 1) {
+    static function paginate($arguments = null, $items_per_page = 10, $current_page = 1) {
       if (isset($this) && instance_of($this, 'ConfigOptions')) {
         return parent::paginate($arguments, $items_per_page, $current_page);
       } else {
@@ -221,7 +221,7 @@
     *
     * @return ConfigOptions 
     */
-    function instance() {
+    static function instance() {
       static $instance;
       if (!instance_of($instance, 'ConfigOptions')) {
         $instance = new ConfigOptions();

@@ -21,7 +21,7 @@
     * @param void
     * @return string
     */
-    function getDisplayName() {
+    static function getDisplayName() {
       return lang('config option name ' . $this->getName());
     } // getDisplayName
     
@@ -31,7 +31,7 @@
     * @param void
     * @return string
     */
-    function getDisplayDescription() {
+    static function getDisplayDescription() {
       $key = 'config option desc ' . $this->getName();
       $desc = lang($key);
       return strpos($desc,$key)===false ? $desc : '';
@@ -43,7 +43,7 @@
     * @param void
     * @return ConfigHandler
     */
-    function getConfigHandler() {
+    static function getConfigHandler() {
       if ($this->config_handler instanceof ConfigHandler) {
         return $this->config_handler;
       }
@@ -71,7 +71,7 @@
     * @param void
     * @return mixed
     */
-    function getValue() {
+    static function getValue() {
       $handler = $this->getConfigHandler();
       $handler->setRawValue(parent::getValue());
       return $handler->getValue();
@@ -84,7 +84,7 @@
     * @param mixed $value
     * @return boolean
     */
-    function setValue($value) {
+    static function setValue($value) {
       $handler = $this->getConfigHandler();
       $handler->setValue($value);
       return parent::setValue($handler->getRawValue());
@@ -96,7 +96,7 @@
     * @param string $control_name
     * @return string
     */
-    function render($control_name) {
+    static function render($control_name) {
       $handler = $this->getConfigHandler();
       return $handler->render($control_name);
     } // render
